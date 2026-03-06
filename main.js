@@ -161,5 +161,15 @@ function enterMap() {
 
   // Fly to a good starting view
   map.flyTo({ center: [85, 24], zoom: 4, pitch: 50, bearing: 0, duration: 2000, essential: true });
-
 }
+
+// Info modal
+const infoBtn = document.getElementById('info-btn');
+const infoModal = document.getElementById('info-modal');
+const infoClose = document.getElementById('info-close');
+
+infoBtn.addEventListener('click', () => infoModal.classList.remove('hidden'));
+infoClose.addEventListener('click', () => infoModal.classList.add('hidden'));
+infoModal.addEventListener('click', (e) => {
+  if (e.target === infoModal) infoModal.classList.add('hidden');
+});

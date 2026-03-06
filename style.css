@@ -231,57 +231,121 @@ html, body {
   color: rgba(0, 0, 0, 0.40);
 }
 
-/* Region callout card */
-#callout {
+
+/* ── Info button ── */
+#info-btn {
   position: absolute;
-  bottom: 110px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-radius: 8px;
-  padding: 16px 20px;
-  max-width: 320px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  bottom: 20px;
+  right: 20px;
   pointer-events: all;
-  z-index: 20;
-  transition: opacity 0.4s, transform 0.4s;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.88);
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s;
 }
 
-#callout.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%) translateY(8px);
+#info-btn:hover {
+  background: rgba(255,255,255,1);
 }
 
-#callout-region {
-  font-size: 13px;
+/* ── Info modal ── */
+#info-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+}
+
+#info-modal.hidden {
+  display: none;
+}
+
+#info-modal-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 32px;
+  max-width: 420px;
+  width: calc(100% - 40px);
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+
+#info-modal-content h2 {
+  font-size: 18px;
   font-weight: 700;
+  margin-bottom: 10px;
   color: #1a1a1a;
-  margin-bottom: 6px;
-  letter-spacing: 0.01em;
 }
 
-#callout-fact {
+#info-modal-content h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin: 18px 0 6px;
+}
+
+#info-modal-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+#info-modal-content a {
+  color: #2a6e2a;
+  text-decoration: underline;
+}
+
+#info-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+#info-links a {
   font-size: 13px;
-  line-height: 1.55;
-  color: rgba(0,0,0,0.6);
+  font-weight: 500;
+  color: #2a6e2a;
+  text-decoration: none;
 }
 
-#callout-close {
+#info-links a:hover {
+  text-decoration: underline;
+}
+
+#info-close {
   position: absolute;
-  top: 10px;
-  right: 12px;
+  top: 14px;
+  right: 16px;
   background: none;
   border: none;
-  font-size: 16px;
-  color: rgba(0,0,0,0.35);
+  font-size: 20px;
+  color: #999;
   cursor: pointer;
   line-height: 1;
+  padding: 0;
 }
 
-#callout-close:hover {
-  color: rgba(0,0,0,0.7);
+#info-close:hover {
+  color: #333;
 }
 
 /* MapLibre attribution */

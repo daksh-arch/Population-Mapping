@@ -109,6 +109,25 @@
         <h1>Human Terrain</h1>
         <p>Global population density</p>
       </div>
+      <button id="info-btn" aria-label="About this map">&#9432;</button>
+    </div>
+
+    <!-- Info modal -->
+    <div id="info-modal" class="hidden" role="dialog" aria-modal="true" aria-label="About">
+      <div id="info-modal-content">
+        <button id="info-close" aria-label="Close">&times;</button>
+        <h2>Human Terrain</h2>
+        <p>An interactive 3D map of global population density. Each hexagon represents ~36 km² at mid zoom. Height and colour show how many people live there.</p>
+        <p>Inspired by Matt Daniels' <a href="https://pudding.cool/2018/10/city_3d/" target="_blank" rel="noopener">Human Terrain</a> on The Pudding.</p>
+        <h3>Data</h3>
+        <p>Population counts from <a href="https://www.kontur.io/portfolio/population-dataset/" target="_blank" rel="noopener">Kontur Population 2023</a> — a global H3 hexagon grid derived from multiple census and satellite sources.</p>
+        <h3>How it's built</h3>
+        <p>MapLibre GL JS + PMTiles. Vector tiles processed with tippecanoe at two H3 resolutions (r6 at z3–5, r7 at z6–9), served as a single 688 MB PMTiles file from Cloudflare R2.</p>
+        <div id="info-links">
+          <a href="https://github.com/daksh-arch/Population-Mapping" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.kontur.io/portfolio/population-dataset/" target="_blank" rel="noopener">Data source</a>
+        </div>
+      </div>
     </div>
 
 

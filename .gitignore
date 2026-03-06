@@ -9,5 +9,9 @@ public/test_pop.pmtiles
 *.backup*
 r7-color-options.js
 
+# Local-only
+CLAUDE.md
+scripts/
+
 # OS
 .DS_Store
