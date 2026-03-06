@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Human Terrain — Global Population Density</title>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="https://pub-631f847ed1d5469483425ea9fbf7ab47.r2.dev/pop_v6.pmtiles" as="fetch" crossorigin>
   </head>
   <body>
     <div id="map"></div>
@@ -110,12 +111,6 @@
       </div>
     </div>
 
-    <!-- Region callout card -->
-    <div id="callout" class="hidden">
-      <div id="callout-region"></div>
-      <div id="callout-fact"></div>
-      <button id="callout-close">×</button>
-    </div>
 
     <script type="module" src="/main.js"></script>
   </body>
