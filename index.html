@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Human Terrain — Global Population Density</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- Dim overlay during landing -->
+    <div id="map-dim"></div>
+
+    <!-- Skip button (visible during landing only) -->
+    <button id="skip-btn" onclick="window.__enterMap && window.__enterMap()">Skip to map</button>
+
+    <!-- Scrollytelling landing -->
+    <div id="landing">
+      <div class="scroll-track">
+
+        <section class="panel" data-zoom="2" data-center="20,20" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">Human Terrain</div>
+            <h1>8 billion people.<br>Here's where they live.</h1>
+            <p>Every spike is a place. Every cluster, a civilization. This map renders global population density as a 3D landscape — taller means denser.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="3" data-center="20,20" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">The world, counted</div>
+            <h2>A wildly uneven planet</h2>
+            <p>Half of all humans live in just <strong>7 countries</strong>. China and India alone account for <strong>2.8 billion</strong> — 35% of everyone alive.</p>
+            <div class="stat-row">
+              <div class="stat"><span class="num">1.4B</span><span class="label">China</span></div>
+              <div class="stat"><span class="num">1.4B</span><span class="label">India</span></div>
+              <div class="stat"><span class="num">340M</span><span class="label">USA</span></div>
+              <div class="stat"><span class="num">280M</span><span class="label">Indonesia</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="5" data-center="85,24" data-bearing="-10">
+          <div class="panel-content">
+            <div class="eyebrow">Density extremes</div>
+            <h2>The Ganges Plain</h2>
+            <p>Stretching from Pakistan to Bangladesh, the Indo-Gangetic Plain is home to over <strong>1 billion people</strong> — packed into a strip of land smaller than Argentina. The densest sustained region on Earth.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="5" data-center="0,20" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">Density extremes</div>
+            <h2>The empty half</h2>
+            <p>The Sahara, Siberia, the Amazon, and the Australian outback together cover <strong>30% of Earth's land area</strong> but hold fewer than 1% of its people. Population is not distributed — it's clustered.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="4" data-center="110,30" data-bearing="-15">
+          <div class="panel-content">
+            <div class="eyebrow">Regional spotlight</div>
+            <h2>The Pearl River Delta</h2>
+            <p>Guangzhou, Shenzhen, Hong Kong, Macau — the Pearl River Delta megalopolis houses <strong>86 million people</strong> in a continuous urban mass. In 1980, most of it was farmland.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="6" data-center="106.8,-6.2" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">Regional spotlight</div>
+            <h2>Java</h2>
+            <p>The island of Java — smaller than England — is home to <strong>157 million people</strong>, making it the most populous island on Earth. Jakarta alone holds 11 million in its city limits.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="5" data-center="31,27" data-bearing="10">
+          <div class="panel-content">
+            <div class="eyebrow">Regional spotlight</div>
+            <h2>The Nile Delta</h2>
+            <p>Egypt is 96% desert. Nearly all of its <strong>105 million people</strong> live in a thin ribbon along the Nile and its delta — one of the sharpest population edges visible from space.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-zoom="3" data-center="20,20" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">Historical context</div>
+            <h2>A century of growth</h2>
+            <p>In 1927, Earth held <strong>2 billion</strong> people. By 2011 it was 7 billion. By 2024, 8 billion. The spikes you see are not just geography — they're the result of a century of explosive urbanisation.</p>
+            <p style="margin-top:12px; opacity:0.6; font-size:13px;">Nearly 60% of people now live in cities. In 1950, that number was 30%.</p>
+          </div>
+        </section>
+
+        <section class="panel panel-enter" data-zoom="3" data-center="20,20" data-bearing="0">
+          <div class="panel-content">
+            <div class="eyebrow">Now</div>
+            <h2>Explore the terrain</h2>
+            <p>Pan and zoom freely. Taller spikes = more people. Every hexagon is ~36 km² at mid zoom.</p>
+            <button id="enter-btn">Enter the map</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Explore UI (hidden until landing dismissed) -->
+    <div id="explore-ui" class="hidden">
+      <div id="overlay">
+        <h1>Human Terrain</h1>
+        <p>Global population density</p>
+      </div>
+    </div>
+
+    <!-- Region callout card -->
+    <div id="callout" class="hidden">
+      <div id="callout-region"></div>
+      <div id="callout-fact"></div>
+      <button id="callout-close">×</button>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

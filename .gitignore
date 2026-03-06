@@ -1,0 +1,13 @@
+node_modules/
+dist/
+
+# Large data files — not for git
+data/
+public/test_pop.pmtiles
+
+# Backups
+*.backup*
+r7-color-options.js
+
+# OS
+.DS_Store
