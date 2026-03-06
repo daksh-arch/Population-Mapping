@@ -6,60 +6,9 @@ import { Protocol } from 'pmtiles';
 const protocol = new Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile);
 
-const PMTILES_URL = '/test_pop.pmtiles';
+const PMTILES_URL = 'https://pub-631f847ed1d5469483425ea9fbf7ab47.r2.dev/pop_v6.pmtiles';
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
-// Region callouts — triggered when viewport center is within ~radius of a region
-const REGION_CALLOUTS = [
-  {
-    id: 'ganges',
-    center: [83, 25],
-    radius: 8,
-    minZoom: 4,
-    region: 'Indo-Gangetic Plain',
-    fact: 'Over 1 billion people live in this strip of land stretching from Pakistan to Bangladesh — smaller than Argentina.',
-  },
-  {
-    id: 'pearl-river',
-    center: [113.5, 22.5],
-    radius: 4,
-    minZoom: 4,
-    region: 'Pearl River Delta',
-    fact: '86 million people in a continuous urban mass. In 1980, most of it was farmland.',
-  },
-  {
-    id: 'java',
-    center: [107, -7],
-    radius: 5,
-    minZoom: 5,
-    region: 'Java, Indonesia',
-    fact: 'Smaller than England, home to 157 million — the most populous island on Earth.',
-  },
-  {
-    id: 'nile',
-    center: [31, 27],
-    radius: 6,
-    minZoom: 4,
-    region: 'Nile Delta & Valley',
-    fact: 'Egypt is 96% desert. Nearly all 105 million Egyptians live along this thin ribbon of river.',
-  },
-  {
-    id: 'yangtze',
-    center: [120, 31],
-    radius: 5,
-    minZoom: 4,
-    region: 'Yangtze River Delta',
-    fact: 'Shanghai, Nanjing, Hangzhou — 100 million people in one of the world\'s largest economic zones.',
-  },
-  {
-    id: 'bangladesh',
-    center: [90, 24],
-    radius: 3,
-    minZoom: 5,
-    region: 'Bangladesh',
-    fact: 'With 170 million people in a country the size of Iowa, Bangladesh is the most densely populated large nation on Earth.',
-  },
-];
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -213,51 +162,4 @@ function enterMap() {
   // Fly to a good starting view
   map.flyTo({ center: [85, 24], zoom: 4, pitch: 50, bearing: 0, duration: 2000, essential: true });
 
-  initCallouts();
-}
-
-// ── Region callouts ───────────────────────────────────────────────
-
-function initCallouts() {
-  const callout = document.getElementById('callout');
-  const regionEl = document.getElementById('callout-region');
-  const factEl = document.getElementById('callout-fact');
-  const closeBtn = document.getElementById('callout-close');
-
-  let dismissedIds = new Set();
-  let activeId = null;
-
-  closeBtn.addEventListener('click', () => {
-    if (activeId) dismissedIds.add(activeId);
-    callout.classList.add('hidden');
-    activeId = null;
-  });
-
-  const check = () => {
-    const center = map.getCenter();
-    const zoom = map.getZoom();
-
-    for (const r of REGION_CALLOUTS) {
-      if (dismissedIds.has(r.id)) continue;
-      if (zoom < r.minZoom) continue;
-      const dist = Math.hypot(center.lng - r.center[0], center.lat - r.center[1]);
-      if (dist < r.radius) {
-        if (activeId === r.id) return; // already showing
-        activeId = r.id;
-        regionEl.textContent = r.region;
-        factEl.textContent = r.fact;
-        callout.classList.remove('hidden');
-        return;
-      }
-    }
-
-    // No region in range — hide if showing
-    if (activeId) {
-      callout.classList.add('hidden');
-      activeId = null;
-    }
-  };
-
-  map.on('moveend', check);
-  map.on('zoomend', check);
 }
